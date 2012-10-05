@@ -3,7 +3,7 @@
  *	Compile with AVRStudio+WinAVR (gcc version 3.4.6)
  */
 
-#include "avr\io.h"
+#include "avr/io.h"
 
 void PORT_Init()
 {
