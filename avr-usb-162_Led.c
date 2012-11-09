@@ -1,10 +1,6 @@
-/*	Sample program for Olimex AVR-USB-162 with AT90USB162 processor
- *	Blinks the led using a simple delay loop.
- *	Compile with AVRStudio+WinAVR (gcc version 3.4.6)
- */
+/* Demo for Minimus 32k. */
 
 #include "avr/io.h"
-#include "util/delay.h"
 
 void PORT_Init()
 {
@@ -14,26 +10,25 @@ void PORT_Init()
 	PORTC = 0b00000000;
 	DDRC = 0b00000000;
 
-	PORTD = 0b10000000;
-	DDRD  = 0b01100000;		//set led as output
+	PORTD = 0b00000000;
+	DDRD  = 0b01100000;		//set LEDs as output
 }
-
-int i;
 
 int main(void)
 {
 	PORT_Init();
 	asm("WDR");						//Watchdog Timer Reset
-	MCUSR= ~(1<<WDRF);
 	WDTCSR = 0x00;                  // Disable the watchdog
 	WDTCKD = 0x00;                  // No early warnings either
 
 	while (1)
 	{
-        PORTD = 0b00100000;
-        _delay_ms(100);
-        PORTD = 0b01000000;
-        _delay_ms(100);
+        if (PIND &  0b10000000) {
+            PORTD = 0b00100000;
+        }
+        else {
+            PORTD = 0b01000000;
+        }
     }
 	return 0;
 }
