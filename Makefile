@@ -11,7 +11,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 avr-usb-162_Led.o: avr-usb-162_Led.c
-	avr-gcc -g -Wall -mcall-prologues -mmcu=atmega32u2 avr-usb-162_Led.c -o avr-usb-162_Led.o
+	avr-gcc -O -Wall -mcall-prologues -mmcu=atmega32u2 avr-usb-162_Led.c -o avr-usb-162_Led.o
 
 avr-usb-162_Led.hex: avr-usb-162_Led.o
 	avr-objcopy -O ihex $(HEX_FLASH_FLAGS)  $< $@
