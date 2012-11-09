@@ -1,7 +1,5 @@
 all: avr-usb-162_Led.hex avr-usb-162_Led.epp avr-usb-162_Led.lss
 
-
-
 ## Intel Hex file production flags
 HEX_FLASH_FLAGS = -R .eeprom -O ihex
 
